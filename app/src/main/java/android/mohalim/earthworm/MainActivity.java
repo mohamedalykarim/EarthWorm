@@ -1,14 +1,13 @@
 package android.mohalim.earthworm;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
+
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,26 +24,35 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ActionBar actionBar = getActionBar();
-
+        getSupportActionBar().setTitle("");
 
         getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         ActionBar.TabListener tabListener = new ActionBar.TabListener() {
+
             @Override
-            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+            public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
 
             }
 
             @Override
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+            public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
 
             }
 
             @Override
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+            public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction ft) {
 
             }
         };
+
+
+        // Add 3 tabs, specifying the tab's text and TabListener
+        for (int i = 0; i < 2; i++) {
+            getSupportActionBar().addTab(
+                    getSupportActionBar().newTab()
+                            .setText("Tab " + (i + 1))
+                            .setTabListener((android.support.v7.app.ActionBar.TabListener) tabListener));
+        }
 
 
 
